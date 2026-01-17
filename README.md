@@ -16,7 +16,7 @@ To address these challenges, we propose **PexFormer**, a novel architecture that
 
 ## ✨ Key Features
 
-- **Patch-Level Tokenization**: Treats sensor time windows as atomic patches, reducing sequence length and computational complexity ($O(L^2) \to O((L/P)^2)$).
+- **Patch-Level Tokenization**: Treats sensor time windows as atomic patches, reducing sequence length and computational complexity quadratic in terms of sequence length $L$ to quadratic in terms of the number of patches $L/P$.
 - **Semi-Permeable Attention (SPA)**: A structured attention mechanism that filters noise and enforces hierarchical feature interaction.
 - **Random Permutation Regularization**: A counter-intuitive discovery that random feature ordering outperforms mutual information sorting for time-series patches.
 - **SOTA on Imbalanced Data**: Achieves exceptional Macro-F1 scores without complex resampling.
