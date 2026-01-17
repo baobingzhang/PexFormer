@@ -61,5 +61,4 @@ python visualization.py
 | DCN V2 | 83.4% | 39.5% |
 | PexFormer (Ours) | **93.3%** | **83.52%** |
 
-## 🔗 Citation
 
