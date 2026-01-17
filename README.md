@@ -37,7 +37,7 @@ Data obtained as required and Place your sensor data (Excel format) in the `data
 
 **1. Training PexFormer**
 ```bash
-python run_Pexformer.py --window_size 25 --gpu 0
+python run_Pexformer.py 
 ```
 
 **2. Ablation Study**
