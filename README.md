@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ### Data Preparation
 
-Place your sensor data (Excel format) in the `data/` directory.
+Data obtained as required and Place your sensor data (Excel format) in the `data/` directory.
 
 ### Usage
 
