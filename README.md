@@ -54,18 +54,8 @@ python visualization.py
 
 | Model | Accuracy | Macro-F1 |
 | :--- | :--- | :--- |
-| LSTM (Baseline) | 88.5% | 72.1% |
-| PexFormer (Ours) | **95.4%** | **87.7%** |
+| BiLSTM (Baseline) | 85.7% | 46.46% |
+| PexFormer (Ours) | **93.3%** | **83.52%** |
 
 ## 🔗 Citation
 
-If you find this work useful, please cite:
-
-```bibtex
-@inproceedings{PexFormer2026,
-  title={PexFormer: Robust Indoor Human Localization via Patch-level Tokenization},
-  author={Zhang, Baobing et al.},
-  booktitle={International Conference on Social Robotics (ICSR)},
-  year={2026}
-}
-```
