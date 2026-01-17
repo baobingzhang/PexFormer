@@ -1,0 +1,71 @@
+# PexFormer: Robust Indoor Human Localization via Patch-level Tokenization and Semi-Permeable Attention
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
+
+> **Official Implementation for ICSR 2026 Submission**
+
+## 📖 Abstract
+
+**Non-intrusive indoor human localization** plays a pivotal role in the development of next-generation Ambient Assisted Living (AAL) systems. However, existing data-driven methods often struggle with extreme class imbalance—characterized by long-tail distributions of room occupancy—and the inherent noise of sparse sensor triggers.
+
+To address these challenges, we propose **PexFormer**, a novel architecture that adapts efficient computational paradigms from the tabular domain to time-series localization tasks. PexFormer leverages **Patch-level Tokenization** to effectively capture local temporal dynamics and integrates a **Semi-Permeable Attention (SPA)** mechanism to construct hierarchical feature interactions.
+
+**Key Innovation**: We empirically demonstrate that a simple **Random Permutation** strategy within the SPA framework significantly outperforms traditional Mutual Information-based sorting, effectively serving as a robust regularization technique against overfitting.
+
+## ✨ Key Features
+
+- **Patch-Level Tokenization**: Treats sensor time windows as atomic patches, reducing sequence length and computational complexity ($O(L^2) \to O((L/P)^2)$).
+- **Semi-Permeable Attention (SPA)**: A structured attention mechanism that filters noise and enforces hierarchical feature interaction.
+- **Random Permutation Regularization**: A counter-intuitive discovery that random feature ordering outperforms mutual information sorting for time-series patches.
+- **SOTA on Imbalanced Data**: Achieves exceptional Macro-F1 scores without complex resampling.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+```bash
+pip install -r requirements.txt
+```
+
+### Data Preparation
+
+Place your sensor data (Excel format) in the `data/` directory.
+
+### Usage
+
+**1. Training PexFormer**
+```bash
+python run_Pexformer.py --window_size 25 --gpu 0
+```
+
+**2. Ablation Study**
+```bash
+python run_Patch_ExcelFormer_ablation.py
+```
+
+**3. Visualization**
+```bash
+python visualization.py
+```
+
+## 📊 Results
+
+| Model | Accuracy | Macro-F1 |
+| :--- | :--- | :--- |
+| LSTM (Baseline) | 88.5% | 72.1% |
+| PexFormer (Ours) | **95.4%** | **87.7%** |
+
+## 🔗 Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{PexFormer2026,
+  title={PexFormer: Robust Indoor Human Localization via Patch-level Tokenization},
+  author={Zhang, Baobing et al.},
+  booktitle={International Conference on Social Robotics (ICSR)},
+  year={2026}
+}
+```
