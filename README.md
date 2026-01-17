@@ -50,11 +50,15 @@ python run_Patch_ExcelFormer_ablation.py
 python visualization.py
 ```
 
-## 📊 Results
+
+## 📊 Key Results
 
 | Model | Accuracy | Macro-F1 |
 | :--- | :--- | :--- |
-| BiLSTM (Baseline) | 85.7% | 46.46% |
+| BiLSTM | 85.7% | 46.46% |
+| NODE | 83.6% | 33.3% |
+| TabTransformer | 80.8% | 33.6% |
+| DCN V2 | 83.4% | 39.5% |
 | PexFormer (Ours) | **93.3%** | **83.52%** |
 
 ## 🔗 Citation
