@@ -70,8 +70,6 @@ If you find this work useful, please cite:
   title     = {Pexformer: Robust Indoor Human Localisation via Patch-level Tokenisation and Semi-Permeable Attention},
   author    = {Zhang, Baobing and Rafique, Sehrish and Alashti, Mohamad Reza Shahabian and Meethal, Shadiya Alingal and Velmurugan, Vignesh and Holthaus, Patrick and Lakatos, Gabriella and Dickinson, Angela and Amirabdollahian, Farshid},
   booktitle = {Social Robotics + Art: 18th International Conference, ICSR+Art 2026, London, UK, Proceedings},
-  series    = {Lecture Notes in Computer Science},
-  publisher = {Springer},
   year      = {2026}
 }
 ```
