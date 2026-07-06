@@ -4,7 +4,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
 
-> **Official Implementation for ICSR 2026 Submission**
+> **Official Implementation — Accepted at ICSR+Art 2026 (18th International Conference on Social Robotics + Art)**
 
 ## 📖 Abstract
 
@@ -60,5 +60,20 @@ python visualization.py
 | TabTransformer | 80.8% | 33.6% |
 | DCN V2 | 83.4% | 39.5% |
 | PexFormer (Ours) | **93.3%** | **83.52%** |
+
+## 🔗 Citation
+
+If you find this work useful, please cite:
+
+```bibtex
+@inproceedings{zhang2026pexformer,
+  title     = {Pexformer: Robust Indoor Human Localisation via Patch-level Tokenisation and Semi-Permeable Attention},
+  author    = {Zhang, Baobing and Rafique, Sehrish and Alashti, Mohamad Reza Shahabian and Meethal, Shadiya Alingal and Velmurugan, Vignesh and Holthaus, Patrick and Lakatos, Gabriella and Dickinson, Angela and Amirabdollahian, Farshid},
+  booktitle = {Social Robotics + Art: 18th International Conference, ICSR+Art 2026, London, UK, Proceedings},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer},
+  year      = {2026}
+}
+```
 
 
