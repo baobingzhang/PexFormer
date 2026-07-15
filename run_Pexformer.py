@@ -37,7 +37,7 @@ from torch.utils.data import TensorDataset, DataLoader
 warnings.filterwarnings('ignore')
 
 # ==========================================
-# ⚙️ Configuration
+# Configuration
 # ==========================================
 RANDOM_SEED = 42
 np.random.seed(RANDOM_SEED)
@@ -56,8 +56,8 @@ PREFETCH_FACTOR = 2
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"🚀 PexFormer Implementation - Device: {device}")
-print(f"📂 Data Folder: {DATA_DIR}")
+print(f"PexFormer Implementation - Device: {device}")
+print(f"Data Folder: {DATA_DIR}")
 
 # ==========================================
 # 1. PexFormer Components (Official)
@@ -262,7 +262,7 @@ def load_and_process_data(folder_path):
     le = LabelEncoder()
     y_raw = le.fit_transform(df_clean[actual_target].astype(str))
     
-    # ⚠️ Normalize Features (Important for NN)
+    # Normalize Features (Important for NN)
     scaler = QuantileTransformer(output_distribution='normal', random_state=RANDOM_SEED)
     X_raw = scaler.fit_transform(df_clean[value_cols].values)
     
@@ -281,7 +281,7 @@ def create_raw_patch_dataset(X, y, time_steps=1):
 def calculate_window_mi_and_sort(X_patches, y):
     # X_patches: (N, Sensors, Window)
     # y: (N,)
-    print("   -> 📊 Calculating Window-Averaged Mutual Information for sorting...")
+    print("   -> Calculating Window-Averaged Mutual Information for sorting...")
     
     N, S, W = X_patches.shape
     
@@ -308,7 +308,7 @@ def calculate_window_mi_and_sort(X_patches, y):
 
 def shuffle_features_randomly(X_patches):
     # X_patches: (N, Sensors, Window)
-    print("   -> 🎲 Applying Random Feature Permutation (Variant B Logic)...")
+    print("   -> Applying Random Feature Permutation (Variant B Logic)...")
     
     # We want a static random permutation of sensors (Fixed by Seed 42)
     num_sensors = X_patches.shape[1]
@@ -334,7 +334,7 @@ print(f"   -> Raw Input Dims: {X_patches_raw.shape} (Batch, Sensors, Window)")
 # C. Random Sorting (True SOTA 93.17% - Seed 42)
 # Scientific Note: Random (93.17%) > MI (92.68%) under strict Seed 42.
 # (Previous higher MI score was due to RNG state drift in ablation loop)
-print(f"   -> 🏆 Using Random Permutation (Validated SOTA: 93.17%)...")
+print(f"   -> Using Random Permutation (Validated SOTA: 93.17%)...")
 # X_final, mi_indices = calculate_window_mi_and_sort(X_patches_raw, y_seq)
 X_final, perm_indices = shuffle_features_randomly(X_patches_raw) 
 
@@ -342,7 +342,7 @@ print(f"   -> Final Permuted Input Dims: {X_final.shape}")
 
 # D. Split
 # CRITICAL FIX: Shuffle data before split to avoid "Class Shift" in sequential data
-print("   -> 🔀 Shuffling data for IID Split (Crucial for Activity Recognition)...")
+print("   -> Shuffling data for IID Split (Crucial for Activity Recognition)...")
 indices = np.arange(len(X_final))
 np.random.shuffle(indices)
 
@@ -502,7 +502,7 @@ total_eval_time = time.time() - eval_time_start
 
 # H. Metrics Reporting
 print("\n" + "="*80)
-print(f"🏆 Logit Adjustment Results (Best Accuracy at Tau={best_res['Tau']})")
+print(f"Logit Adjustment Results (Best Accuracy at Tau={best_res['Tau']})")
 print("="*80)
 df_res = pd.DataFrame(results_list)
 print(df_res.to_markdown(index=False, floatfmt=".4f"))
@@ -529,14 +529,14 @@ metrics = {
 }
 
 print("\n" + "="*80)
-print(f"🏆 Final Results Details")
+print(f"Final Results Details")
 print("="*80)
 df_final = pd.DataFrame([metrics])
 col_order = ["Model", "Type", "Accuracy", "F1-Weighted", "F1-Macro", "Precision-W", "Recall-W", "Recall-Macro", "Balanced Acc", "MCC", "Time"]
 print(df_final[col_order].to_markdown(index=False, floatfmt=".4f"))
 print("="*80)
 
-# 💾 Save Results (Overwrite)
+# Save Results (Overwrite)
 csv_file = "baseline_results.csv"
 df_final["Timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
 df_final.to_csv(csv_file, index=False)

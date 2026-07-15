@@ -1,7 +1,7 @@
 """
-传感器数据可视化脚本 V3 - 5种新可视化方案
+Sensor Data Visualization Script V3 - 5 New Visualization Schemes
 ============================================
-生成5种新的可视化图表
+Generate 5 new visualization charts
 """
 
 import pandas as pd

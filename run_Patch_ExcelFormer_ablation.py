@@ -43,7 +43,7 @@ torch.manual_seed(RANDOM_SEED)
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # ==========================================
-# 🧱 Model Components
+# Model Components
 # ==========================================
 def attenuated_kaiming_uniform_(tensor, a=math.sqrt(5), scale=1., mode='fan_in', nonlinearity='leaky_relu'):
     fan = nn_init._calculate_correct_fan(tensor, mode)
@@ -173,10 +173,10 @@ class PexFormer(nn.Module):
         return self.head(x)
 
 # ==========================================
-# 🛠 Data Pipeline
+# Data Pipeline
 # ==========================================
 def run_ablation():
-    print("🔬 Starting PexFormer Ablation Study (SOTA Aligned)...")
+    print("Starting PexFormer Ablation Study (SOTA Aligned)...")
     
     # 1. Load Raw
     all_dfs = []
@@ -197,7 +197,7 @@ def run_ablation():
     scaler = QuantileTransformer(output_distribution='normal', random_state=42)
     X_raw = scaler.fit_transform(df[val_cols].values) #(TotalTime, Sensors)
     
-    # ⚠️ CRITICAL ALIGNMENT ⚠️
+    # CRITICAL ALIGNMENT
     # Capture RNG State after Data Gen to match Baseline's flow exactly.
     # Baseline flow: Seed 42 -> QT -> Shuffle -> Split.
     # We must replicate "State after QT" for EVERY variant.
@@ -220,7 +220,7 @@ def run_ablation():
         np.random.set_state(rng_state_numpy)
         torch.set_rng_state(rng_state_torch)
         
-        print(f"\n👉 Running Variant {v['id']}: {v['name']}")
+        print(f"\nRunning Variant {v['id']}: {v['name']}")
         
         # A. Data Prep
         if v['flatten']:
@@ -257,7 +257,7 @@ def run_ablation():
                 X_input = X_input[:, sort_idx, :]
                 
         elif v['sort'] == 'random':
-             print("   -> 🎲 Random feature order (Variant A - SOTA)...")
+             print("   -> Random feature order (Variant A - SOTA)...")
              # Strict Replication of run_baseline_excelformer.py logic
              # num_sensors = X_input.shape[1]
              # perm = np.arange(num_sensors); np.random.shuffle(perm)
@@ -339,12 +339,12 @@ def run_ablation():
         del model, train_loader, test_loader; torch.cuda.empty_cache(); gc.collect()
 
     print("\n" + "="*60)
-    print("🧪 ABLATION STUDY RESULTS")
+    print("ABLATION STUDY RESULTS")
     print("="*60)
     df_res = pd.DataFrame(results)
     print(df_res.to_markdown(index=False, floatfmt=".4f"))
     
-    # 💾 Save Results (Overwrite)
+    # Save Results (Overwrite)
     csv_file = "ablation_results.csv"
     df_res["Timestamp"] = time.strftime("%Y-%m-%d %H:%M:%S")
     # Reorder cols to put timestamp first
