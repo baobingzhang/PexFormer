@@ -6,7 +6,7 @@
 
 > **Official Implementation — Accepted at ICSR+Art 2026 (18th International Conference on Social Robotics + Art)**
 
-## 📖 Abstract
+## Abstract
 
 **Non-intrusive indoor human localization** plays a pivotal role in the development of next-generation Ambient Assisted Living (AAL) systems. However, existing data-driven methods often struggle with extreme class imbalance—characterized by long-tail distributions of room occupancy—and the inherent noise of sparse sensor triggers.
 
@@ -14,14 +14,14 @@ To address these challenges, we propose **PexFormer**, a novel architecture that
 
 **Key Innovation**: We empirically demonstrate that a simple **Random Permutation** strategy within the SPA framework significantly outperforms traditional Mutual Information-based sorting, effectively serving as a robust regularization technique against overfitting.
 
-## ✨ Key Features
+## Key Features
 
 - **Patch-Level Tokenization**: Treats sensor time windows as atomic patches, reducing sequence length and computational complexity quadratic in terms of sequence length $L$ to quadratic in terms of the number of patches $L/P$.
 - **Semi-Permeable Attention (SPA)**: A structured attention mechanism that filters noise and enforces hierarchical feature interaction.
 - **Random Permutation Regularization**: A counter-intuitive discovery that random feature ordering outperforms mutual information sorting for time-series patches.
 - **SOTA on Imbalanced Data**: Achieves exceptional Macro-F1 scores without complex resampling.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -51,7 +51,7 @@ python visualization.py
 ```
 
 
-## 📊 Key Results
+## Key Results
 
 | Model | Accuracy | Macro-F1 |
 | :--- | :--- | :--- |
@@ -61,7 +61,7 @@ python visualization.py
 | DCN V2 | 83.4% | 39.5% |
 | PexFormer (Ours) | **93.3%** | **83.52%** |
 
-## 🔗 Citation
+## Citation
 
 If you find this work useful, please cite:
 
